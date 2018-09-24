@@ -5,7 +5,6 @@ using Accounting.DomainLogic.Exceptions;
 
 namespace Accounting.Controllers
 {
-    [Authorize]
     public class PurchaseOrderController : ApiController
     {
         private IPurchaseOrderDomainLogic _purchaseOrderDomainLogic;

@@ -5,7 +5,6 @@ using Accounting.DomainLogic.Exceptions;
 
 namespace Accounting.Controllers
 {
-    [Authorize]
     public class CustomerSnapshotController : ApiController
     {
         private ICustomerSnapshotDomainLogic _customerSnapshotDomainLogic;

@@ -9,7 +9,6 @@ using Accounting.Utils;
 
 namespace Accounting.Controllers
 {
-    [Authorize]
     public class ItemsSnapshotController : ApiController
     {
         private IItemsSnapshotDomainLogic _itemsSnapshotDomainLogic;

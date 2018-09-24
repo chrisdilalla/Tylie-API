@@ -10,7 +10,6 @@ using Accounting.Utils;
 
 namespace Accounting.Controllers
 {
-    [Authorize]
     public class ContractPricingSnapshotController : ApiController
     {
         private IContractPricingSnapshotDomainLogic _contractPricingSnapshotDomainLogic;
