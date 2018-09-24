@@ -1,11 +1,14 @@
-﻿using System.Web.Http;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Http;
+using Accounting.Controllers.Abstract;
 using Accounting.Data.DataTransferObjects.Request;
 using Accounting.DomainLogic;
 using Accounting.DomainLogic.Exceptions;
+using Accounting.Infrastructure;
 
 namespace Accounting.Controllers
 {
-    public class CustomerSnapshotController : ApiController
+    public class CustomerSnapshotController : BaseController
     {
         private ICustomerSnapshotDomainLogic _customerSnapshotDomainLogic;
 
@@ -16,20 +19,15 @@ namespace Accounting.Controllers
 
 
         [Route("customers/{companyID}")]
-        public IHttpActionResult Post(string companyID, [FromBody]CustomerSnapshotRequestDto inputDto)
+        [ValidateActionParameters]
+        public IHttpActionResult Post([MinLength(1)][MaxLength(3)]string companyID,
+            [Required][FromBody]CustomerSnapshotRequestDto inputDto)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+                ThrowModelStateException(ModelState);
 
-            try
-            {
-                _customerSnapshotDomainLogic.AddCustomer(companyID, inputDto);
-                return Ok();
-            }
-            catch (AccountingException accountingException)
-            {
-                return BadRequest(accountingException.Message);
-            }
+            _customerSnapshotDomainLogic.AddCustomer(companyID, inputDto);
+            return Ok();
         }
     }
 }

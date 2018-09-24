@@ -9,7 +9,7 @@ namespace Accounting
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            // Configure Web API to use only bearer token authentication.
+            GlobalConfiguration.Configuration.Filters.Add(new AppExceptionFilter());
 
             // Web API routes
             config.MapHttpAttributeRoutes(new CentralizedPrefixProvider("api/v1"));

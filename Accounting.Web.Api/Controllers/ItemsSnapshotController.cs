@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Http;
+using Accounting.Controllers.Abstract;
 using Accounting.Data.DataTransferObjects.Response;
 using Accounting.DomainLogic;
 using Accounting.DomainLogic.Exceptions;
@@ -9,7 +10,7 @@ using Accounting.Utils;
 
 namespace Accounting.Controllers
 {
-    public class ItemsSnapshotController : ApiController
+    public class ItemsSnapshotController : BaseController
     {
         private IItemsSnapshotDomainLogic _itemsSnapshotDomainLogic;
 
@@ -24,17 +25,10 @@ namespace Accounting.Controllers
                                     DateTime lastUpdatedDate)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            
-            try
-            {
-                ItemsSnapshotResponseDto responseDto = _itemsSnapshotDomainLogic.GetItemsSnapshot(companyID, lastUpdatedDate);
-                return Ok(responseDto);
-            }
-            catch (AccountingException accountingException)
-            {
-                return BadRequest(accountingException.Message);
-            }
+                ThrowModelStateException(ModelState);
+
+            ItemsSnapshotResponseDto responseDto = _itemsSnapshotDomainLogic.GetItemsSnapshot(companyID, lastUpdatedDate);
+            return Ok(responseDto);
         }
     }
 }

@@ -7,12 +7,6 @@ namespace Accounting.Data.DataTransferObjects.Response
     {
         public IList<ItemsSnapshotItem> Data { get; set; }
 
-        public class ErrorLink
-        {
-            public string Rel { get; set; }
-            public string Href { get; set; }
-        }
-
         public class ItemsSnapshotItem
         {
             public string CompanyID { get; set; }

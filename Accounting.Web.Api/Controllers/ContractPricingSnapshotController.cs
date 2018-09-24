@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using System.Web.Http;
+using Accounting.Controllers.Abstract;
 using Accounting.Data.DataTransferObjects.Response;
 using Accounting.DomainLogic;
 using Accounting.DomainLogic.Exceptions;
@@ -10,7 +11,7 @@ using Accounting.Utils;
 
 namespace Accounting.Controllers
 {
-    public class ContractPricingSnapshotController : ApiController
+    public class ContractPricingSnapshotController : BaseController
     {
         private IContractPricingSnapshotDomainLogic _contractPricingSnapshotDomainLogic;
 
@@ -25,17 +26,10 @@ namespace Accounting.Controllers
             DateTime lastUpdatedDate)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+                ThrowModelStateException(ModelState);
 
-            try
-            {
-                ContractPricingSnapshotResponseDto responseDto = _contractPricingSnapshotDomainLogic.GetContractPricingSnapshot(companyID, lastUpdatedDate);
-                return Ok(responseDto);
-            }
-            catch (AccountingException accountingException)
-            {
-                return BadRequest(accountingException.Message);
-            }
+            ContractPricingSnapshotResponseDto responseDto = _contractPricingSnapshotDomainLogic.GetContractPricingSnapshot(companyID, lastUpdatedDate);
+            return Ok(responseDto);
         }
     }
 }

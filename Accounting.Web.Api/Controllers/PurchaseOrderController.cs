@@ -1,11 +1,14 @@
-﻿using System.Web.Http;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Http;
+using Accounting.Controllers.Abstract;
 using Accounting.Data.DataTransferObjects.Request;
 using Accounting.DomainLogic;
 using Accounting.DomainLogic.Exceptions;
+using Accounting.Infrastructure;
 
 namespace Accounting.Controllers
 {
-    public class PurchaseOrderController : ApiController
+    public class PurchaseOrderController : BaseController
     {
         private IPurchaseOrderDomainLogic _purchaseOrderDomainLogic;
 
@@ -16,20 +19,15 @@ namespace Accounting.Controllers
 
 
         [Route("purchaseorders/{companyID}")]
-        public IHttpActionResult Post(string companyID, [FromBody]PurchaseOrderRequestDto inputDto)
+        [ValidateActionParameters]
+        public IHttpActionResult Post([MinLength(1)][MaxLength(3)]string companyID,
+            [Required][FromBody]PurchaseOrderRequestDto inputDto)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+                ThrowModelStateException(ModelState);
 
-            try
-            {
-                _purchaseOrderDomainLogic.AddPurchaseOrder(companyID, inputDto);
-                return Ok();
-            }
-            catch (AccountingException accountingException)
-            {
-                return BadRequest(accountingException.Message);
-            }
+            _purchaseOrderDomainLogic.AddPurchaseOrder(companyID, inputDto);
+            return Ok();
         }
     }
 }
