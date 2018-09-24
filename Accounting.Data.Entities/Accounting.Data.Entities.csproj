@@ -47,7 +47,6 @@
     <Compile Include="DataTransferObjects\Request\PurchaseOrderRequestDto.cs" />
     <Compile Include="DataTransferObjects\Request\SalesOrderRequestDto.cs" />
     <Compile Include="DataTransferObjects\Request\CustomerSnapshotRequestDto.cs" />
-    <Compile Include="DataTransferObjects\Request\SnapshotForCompanyAndDateRequestDto.cs" />
     <Compile Include="DataTransferObjects\Response\Abstract\BaseResponseDtoWithErrorLinks.cs" />
     <Compile Include="DataTransferObjects\Response\Abstract\BaseResponseDto.cs" />
     <Compile Include="DataTransferObjects\Response\PurchaseOrderResponseDto.cs" />

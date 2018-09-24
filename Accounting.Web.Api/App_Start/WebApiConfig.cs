@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Accounting.Infrastructure;
 using Microsoft.Owin.Security.OAuth;
 
 namespace Accounting
@@ -9,11 +10,9 @@ namespace Accounting
         {
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
-            config.SuppressDefaultHostAuthentication();
-            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Web API routes
-            config.MapHttpAttributeRoutes();
+            config.MapHttpAttributeRoutes(new CentralizedPrefixProvider("api/v1"));
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

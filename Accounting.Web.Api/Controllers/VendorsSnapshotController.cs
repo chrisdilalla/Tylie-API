@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Http;
-using Accounting.Data.DataTransferObjects.Request;
 using Accounting.Data.DataTransferObjects.Response;
 using Accounting.DomainLogic;
 using Accounting.DomainLogic.Exceptions;
+using Accounting.Infrastructure;
+using Accounting.Utils;
 
 namespace Accounting.Controllers
 {
@@ -18,15 +19,17 @@ namespace Accounting.Controllers
             _vendorsSnapshotDomainLogic = new VendorsSnapshotDomainLogic();
         }
 
-        [Route("vendors/{companyID}/{lastUpdatedDate}")]
-        public IHttpActionResult Get([FromUri]SnapshotForCompanyAndDateRequestDto inputDto)
+        [Route("vendors/" + Constants.RouteWithCompanyAndDate)]
+        [ValidateActionParameters]
+        public IHttpActionResult Get([MinLength(1)][MaxLength(3)]string companyID,
+                                    DateTime lastUpdatedDate)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             try
             {
-                VendorsSnapshotResponseDto responseDto = _vendorsSnapshotDomainLogic.GetVendorsSnapshot(inputDto);
+                VendorsSnapshotResponseDto responseDto = _vendorsSnapshotDomainLogic.GetVendorsSnapshot(companyID, lastUpdatedDate);
                 return Ok(responseDto);
             }
             catch (AccountingException accountingException)

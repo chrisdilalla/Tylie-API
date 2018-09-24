@@ -6,12 +6,12 @@ namespace Accounting.DomainLogic
 {
     public interface IVendorsSnapshotDomainLogic
     {
-        VendorsSnapshotResponseDto GetVendorsSnapshot(SnapshotForCompanyAndDateRequestDto inputDto);
+        VendorsSnapshotResponseDto GetVendorsSnapshot(string companyID, DateTime lastUpdatedDate);
     }
 
     public class VendorsSnapshotDomainLogic : IVendorsSnapshotDomainLogic
     {
-        public VendorsSnapshotResponseDto GetVendorsSnapshot(SnapshotForCompanyAndDateRequestDto inputDto)
+        public VendorsSnapshotResponseDto GetVendorsSnapshot(string companyID, DateTime lastUpdatedDate)
         {
             VendorsSnapshotResponseDto responseDto = new VendorsSnapshotResponseDto();
             return responseDto;

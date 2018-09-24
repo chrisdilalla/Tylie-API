@@ -201,9 +201,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AppDateFormatValidationAttribute.cs" />
+    <Compile Include="Infrastructure\CentralizedPrefixProvider.cs" />
+    <Compile Include="Infrastructure\ValidateActionParametersAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\WebApiInteraction.cs" />
   </ItemGroup>
   <ItemGroup>
