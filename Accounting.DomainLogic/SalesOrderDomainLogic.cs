@@ -20,13 +20,14 @@ namespace Accounting.DomainLogic
 
         private async Task<SalesOrderResponseDto> QueueSalesOrder(string companyID, SalesOrderRequestDto inputDto)
         {
-            return await Task.Factory.StartNew<SalesOrderResponseDto>(() =>
+            SalesOrderResponseDto result =  await Task.Factory.StartNew<SalesOrderResponseDto>(() =>
             {
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(10000); // simulates a long running operation
                 WebApiInteraction webApiInteraction = new WebApiInteraction();
                 webApiInteraction.PostAsync<SalesOrderCallbackRequestDto, object>(inputDto.CallbackUrl, new SalesOrderCallbackRequestDto());
                 return new SalesOrderResponseDto();
             });
+            return result;
         }
     }
 }

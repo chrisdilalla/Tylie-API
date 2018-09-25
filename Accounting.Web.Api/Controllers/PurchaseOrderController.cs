@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Accounting.Controllers.Abstract;
 using Accounting.Data.DataTransferObjects.Request;
+using Accounting.Data.DataTransferObjects.Response;
 using Accounting.DomainLogic;
 using Accounting.DomainLogic.Exceptions;
 using Accounting.Infrastructure;
@@ -20,14 +22,14 @@ namespace Accounting.Controllers
 
         [Route("purchaseorders/{companyID}")]
         [ValidateActionParameters]
-        public IHttpActionResult Post([MinLength(1)][MaxLength(3)]string companyID,
+        public async Task<IHttpActionResult> Post([MinLength(1)][MaxLength(3)]string companyID,
             [Required][FromBody]PurchaseOrderRequestDto inputDto)
         {
             if (!ModelState.IsValid)
                 ThrowModelStateException(ModelState);
 
-            _purchaseOrderDomainLogic.AddPurchaseOrder(companyID, inputDto);
-            return Ok();
+            PurchaseOrderResponseDto res = await _purchaseOrderDomainLogic.AddPurchaseOrder(companyID, inputDto);
+            return Ok(res);
         }
     }
 }
