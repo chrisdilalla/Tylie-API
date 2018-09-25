@@ -28,16 +28,16 @@ namespace Accounting.Utils
 
                 var result = await client.PostAsync(endpoint, content);
                 ApiPutPostResult retval = new ApiPutPostResult(result);
-                string outputJson = await result.Content.ReadAsStringAsync();
+                string responseContentString = await result.Content.ReadAsStringAsync();
 
                 if (retval.IsSuccessStatusCode)
                 {
                     if (typeof(TOut) != typeof(string))
-                        retval.Object = JsonConvert.DeserializeObject<TOut>(outputJson);
+                        retval.Object = JsonConvert.DeserializeObject<TOut>(responseContentString);
                 }
                 else
                 {
-                    retval.Object = outputJson;
+                    retval.Object = responseContentString;
                 }
                 return retval;
             }
