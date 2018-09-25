@@ -13,7 +13,6 @@ namespace Accounting.Utils
     {
         public async Task<ApiPutPostResult> PostAsync<TIn, TOut>(string endpoint, TIn data, string authToken = null)
         {
-
             using (var client = new HttpClient())
             {
                 if (!string.IsNullOrEmpty(authToken))
