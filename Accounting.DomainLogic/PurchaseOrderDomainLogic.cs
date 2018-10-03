@@ -24,7 +24,7 @@ namespace Accounting.DomainLogic
             {
                 System.Threading.Thread.Sleep(10000); // simulates a long running operation
                 WebApiInteraction webApiInteraction = new WebApiInteraction();
-                webApiInteraction.PostAsync<PurchaseOrderCallbackRequestDto, object>(inputDto.CallbackUrl, new PurchaseOrderCallbackRequestDto());
+                webApiInteraction.PostAsync<PurchaseOrderCallbackRequestDto, object>(inputDto.CallbackUrl, new PurchaseOrderCallbackRequestDto() {CompanyID = "1", PurchaseOrderNo = "2"});
                 return new PurchaseOrderResponseDto();
             });
             return result;

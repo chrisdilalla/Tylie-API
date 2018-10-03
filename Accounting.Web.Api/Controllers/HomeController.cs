@@ -6,8 +6,7 @@ namespace Accounting.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
+            ViewBag.Title = "Sage 500 - Tylie Integration API";
             return View();
         }
     }
