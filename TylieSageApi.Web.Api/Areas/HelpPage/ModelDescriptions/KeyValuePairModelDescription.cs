@@ -1,4 +1,4 @@
-namespace Accounting.Areas.HelpPage.ModelDescriptions
+namespace TylieSageApi.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     public class KeyValuePairModelDescription : ModelDescription
     {

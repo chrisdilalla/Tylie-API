@@ -1,6 +1,6 @@
 using System;
 
-namespace Accounting.Areas.HelpPage
+namespace TylieSageApi.Web.Api.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.

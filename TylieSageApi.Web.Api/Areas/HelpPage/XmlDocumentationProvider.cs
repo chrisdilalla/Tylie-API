@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using System.Xml.XPath;
-using Accounting.Areas.HelpPage.ModelDescriptions;
+using TylieSageApi.Web.Api.Areas.HelpPage.ModelDescriptions;
 
-namespace Accounting.Areas.HelpPage
+namespace TylieSageApi.Web.Api.Areas.HelpPage
 {
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.

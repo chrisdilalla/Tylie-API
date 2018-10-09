@@ -1,6 +1,6 @@
 using System;
 
-namespace Accounting.Areas.HelpPage.ModelDescriptions
+namespace TylieSageApi.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

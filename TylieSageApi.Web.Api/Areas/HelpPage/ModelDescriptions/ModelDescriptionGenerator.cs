@@ -11,7 +11,7 @@ using System.Web.Http.Description;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
-namespace Accounting.Areas.HelpPage.ModelDescriptions
+namespace TylieSageApi.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Generates model descriptions for given types.

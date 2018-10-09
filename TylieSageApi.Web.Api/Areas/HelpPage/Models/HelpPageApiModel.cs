@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using Accounting.Areas.HelpPage.ModelDescriptions;
+using TylieSageApi.Web.Api.Areas.HelpPage.ModelDescriptions;
 
-namespace Accounting.Areas.HelpPage.Models
+namespace TylieSageApi.Web.Api.Areas.HelpPage.Models
 {
     /// <summary>
     /// The model that represents an API displayed on the help page.

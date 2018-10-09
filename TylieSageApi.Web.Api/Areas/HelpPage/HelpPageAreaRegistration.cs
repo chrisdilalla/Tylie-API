@@ -1,7 +1,8 @@
 using System.Web.Http;
 using System.Web.Mvc;
+using TylieSageApi.Web.Api.Areas.HelpPage.App_Start;
 
-namespace Accounting.Areas.HelpPage
+namespace TylieSageApi.Web.Api.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {
