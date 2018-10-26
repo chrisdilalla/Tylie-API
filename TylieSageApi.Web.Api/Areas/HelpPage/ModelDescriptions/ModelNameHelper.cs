@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace Accounting.Areas.HelpPage.ModelDescriptions
+namespace TylieSageApi.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

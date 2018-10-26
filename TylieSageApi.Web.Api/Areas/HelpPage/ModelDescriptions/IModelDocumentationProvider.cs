@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace Accounting.Areas.HelpPage.ModelDescriptions
+namespace TylieSageApi.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

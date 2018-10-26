@@ -11,10 +11,11 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using Accounting.Areas.HelpPage.ModelDescriptions;
-using Accounting.Areas.HelpPage.Models;
+using TylieSageApi.Web.Api.Areas.HelpPage.ModelDescriptions;
+using TylieSageApi.Web.Api.Areas.HelpPage.Models;
+using TylieSageApi.Web.Api.Areas.HelpPage.SampleGeneration;
 
-namespace Accounting.Areas.HelpPage
+namespace TylieSageApi.Web.Api.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using Accounting.Areas.HelpPage.ModelDescriptions;
-using Accounting.Areas.HelpPage.Models;
+using TylieSageApi.Web.Api.Areas.HelpPage.ModelDescriptions;
+using TylieSageApi.Web.Api.Areas.HelpPage.Models;
 
-namespace Accounting.Areas.HelpPage.Controllers
+namespace TylieSageApi.Web.Api.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.
