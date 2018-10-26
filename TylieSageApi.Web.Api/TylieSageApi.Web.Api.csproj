@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -344,6 +345,10 @@
     <ProjectReference Include="..\TylieSageApi.Data.Entities\TylieSageApi.Data.Entities.csproj">
       <Project>{27737e2f-02af-47ef-b49c-45d4fbfeb079}</Project>
       <Name>TylieSageApi.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TylieSageApi.Data\TylieSageApi.Data.csproj">
+      <Project>{7d915ebd-b53e-4a89-a959-cab19c698c06}</Project>
+      <Name>TylieSageApi.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\TylieSageApi.DomainLogic\TylieSageApi.DomainLogic.csproj">
       <Project>{a74ebf5f-2a06-4c62-b202-6bcc89225c87}</Project>

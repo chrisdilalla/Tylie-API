@@ -55,6 +55,10 @@
       <Project>{27737e2f-02af-47ef-b49c-45d4fbfeb079}</Project>
       <Name>TylieSageApi.Data.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TylieSageApi.Data\TylieSageApi.Data.csproj">
+      <Project>{7d915ebd-b53e-4a89-a959-cab19c698c06}</Project>
+      <Name>TylieSageApi.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
