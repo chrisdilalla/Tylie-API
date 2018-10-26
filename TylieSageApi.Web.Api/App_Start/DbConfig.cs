@@ -12,7 +12,7 @@ namespace TylieSageApi.Web.Api.App_Start
     {
         public static void SetConfig()
         {
-             BaseRepository.SetConnectionString(WebConfigurationManager.ConnectionStrings["main"].ConnectionString);
+             BaseRepository.SetConnectionString(WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
         }
     }
 }
