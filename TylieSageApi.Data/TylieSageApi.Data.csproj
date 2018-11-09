@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
+    <Compile Include="ContractPricingRepository.cs" />
+    <Compile Include="VendorRepository.cs" />
+    <Compile Include="IItemRepository.cs" />
     <Compile Include="CustomerSnapshotRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

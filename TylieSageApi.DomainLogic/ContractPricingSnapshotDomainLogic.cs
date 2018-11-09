@@ -1,4 +1,5 @@
 ﻿using System;
+using TylieSageApi.Data;
 using TylieSageApi.Data.Entities.DataTransferObjects.Response;
 using TylieSageApi.DomainLogic.Exceptions;
 
@@ -11,16 +12,17 @@ namespace TylieSageApi.DomainLogic
 
     public class ContractPricingSnapshotDomainLogic : IContractPricingSnapshotDomainLogic
     {
+        private IContractPricingRepository _contractPricingRepository;
+
+        public ContractPricingSnapshotDomainLogic()
+        {
+            _contractPricingRepository = new ContractPricingRepository();
+        }
+
+
         public ContractPricingSnapshotResponseDto GetContractPricingSnapshot(string companyID, DateTime lastUpdatedDate)
         {
-            ContractPricingSnapshotResponseDto responseDto = new ContractPricingSnapshotResponseDto();
-            if (companyID == "400")
-                throw new AccountingException("demo title", "company is wrong (demo code to be removed");
-            if (companyID == "500")
-            {
-                int a = 0;
-                int b = 5 / a;
-            }
+            ContractPricingSnapshotResponseDto responseDto = _contractPricingRepository.GetByCompanyId(companyID);
             return responseDto;
         }
     }

@@ -5,7 +5,7 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Response
 {
     public class VendorsSnapshotResponseDto : BaseResponseDtoWithErrorLinks
     {
-        public IList<VendorsSnapshotItem> Data { get; set; }
+        public IEnumerable<VendorsSnapshotItem> Data { get; set; }
 
         public class VendorsSnapshotItem
         {

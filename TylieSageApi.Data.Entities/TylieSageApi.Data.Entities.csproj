@@ -49,7 +49,7 @@
     <Compile Include="DataTransferObjects\Response\VendorsSnapshotResponseDto.cs" />
     <Compile Include="DataTransferObjects\Response\ItemsSnapshotResponseDto.cs" />
     <Compile Include="DataTransferObjects\Response\CustomerSnapshotResponseDto.cs" />
-    <Compile Include="Entities\CustomerSnapshotResponseDto.cs" />
+    <Compile Include="Entities\Customer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -1,4 +1,5 @@
 ﻿using System;
+using TylieSageApi.Data;
 using TylieSageApi.Data.Entities.DataTransferObjects.Response;
 
 namespace TylieSageApi.DomainLogic
@@ -10,9 +11,16 @@ namespace TylieSageApi.DomainLogic
 
     public class ItemsSnapshotDomainLogic : IItemsSnapshotDomainLogic
     {
+        private IItemRepository _itemRepository;
+
+        public ItemsSnapshotDomainLogic()
+        {
+            _itemRepository = new ItemRepository();
+        }
+
         public ItemsSnapshotResponseDto GetItemsSnapshot(string companyID, DateTime lastUpdatedDate)
         {
-            ItemsSnapshotResponseDto responseDto = new ItemsSnapshotResponseDto();
+            ItemsSnapshotResponseDto responseDto = _itemRepository.GetByCompanyId(companyID);
             return responseDto;
         }
     }

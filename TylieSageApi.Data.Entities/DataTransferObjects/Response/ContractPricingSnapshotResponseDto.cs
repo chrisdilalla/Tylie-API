@@ -5,7 +5,12 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Response
 {
     public class ContractPricingSnapshotResponseDto : BaseResponseDtoWithErrorLinks
     {
-        public IList<ContractPricingSnapshotItem> Data { get; set; }
+        public ContractPricingSnapshotResponseDto()
+        {
+            Data = new List<ContractPricingSnapshotItem>();
+        }
+
+        public IEnumerable<ContractPricingSnapshotItem> Data { get; set; }
 
         public class ContractPricingSnapshotItem
         {
@@ -16,8 +21,10 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Response
             public string Brand { get; set; }
             public string ItemID { get; set; }
             public string ShortDesc { get; set; }
-            public decimal EffectiveDate { get; set; }
+            public string EffectiveDate { get; set; }
             public decimal Amount { get; set; }
+            public string Status { get; set; }
+
 
         }
     }

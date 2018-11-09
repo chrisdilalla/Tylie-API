@@ -1,4 +1,5 @@
 ﻿using System;
+using TylieSageApi.Data;
 using TylieSageApi.Data.Entities.DataTransferObjects.Response;
 
 namespace TylieSageApi.DomainLogic
@@ -10,9 +11,16 @@ namespace TylieSageApi.DomainLogic
 
     public class VendorsSnapshotDomainLogic : IVendorsSnapshotDomainLogic
     {
+        private IVendorRepository _vendorRepository;
+
+        public VendorsSnapshotDomainLogic()
+        {
+            _vendorRepository = new VendorRepository();
+        }
+
         public VendorsSnapshotResponseDto GetVendorsSnapshot(string companyID, DateTime lastUpdatedDate)
         {
-            VendorsSnapshotResponseDto responseDto = new VendorsSnapshotResponseDto();
+            VendorsSnapshotResponseDto responseDto = _vendorRepository.GetByCompanyId(companyID);
             return responseDto;
         }
     }
