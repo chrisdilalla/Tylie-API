@@ -10,12 +10,12 @@ namespace TylieSageApi.Data
 {
     public interface IVendorRepository
     {
-        VendorsSnapshotResponseDto GetByCompanyId(string companyId, DateTime lastUpdatedDate);
+        VendorsSnapshotResponseDto GetByCompanyIdAndLastUpdate(string companyId, DateTime lastUpdatedDate);
     }
 
     public class VendorRepository : BaseRepository, IVendorRepository
     {
-        public VendorsSnapshotResponseDto GetByCompanyId(string companyId, DateTime lastUpdatedDate)
+        public VendorsSnapshotResponseDto GetByCompanyIdAndLastUpdate(string companyId, DateTime lastUpdatedDate)
         {
             var parameters = new {CompanyId = companyId, LastUpdatedDate = lastUpdatedDate };
             VendorsSnapshotResponseDto resultDto = new VendorsSnapshotResponseDto();

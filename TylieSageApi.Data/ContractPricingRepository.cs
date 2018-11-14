@@ -10,12 +10,12 @@ namespace TylieSageApi.Data
 {
     public interface IContractPricingRepository
     {
-        ContractPricingSnapshotResponseDto GetByCompanyId(string companyId, DateTime lastUpdatedDate);
+        ContractPricingSnapshotResponseDto GetByCompanyIdAndLastUpdate(string companyId, DateTime lastUpdatedDate);
     }
 
     public class ContractPricingRepository : BaseRepository, IContractPricingRepository
     {
-        public ContractPricingSnapshotResponseDto GetByCompanyId(string companyId, DateTime lastUpdatedDate)
+        public ContractPricingSnapshotResponseDto GetByCompanyIdAndLastUpdate(string companyId, DateTime lastUpdatedDate)
         {
             ContractPricingSnapshotResponseDto resultDto = new ContractPricingSnapshotResponseDto();
             var parameters = new {CompanyId = companyId, LastUpdatedDate  = lastUpdatedDate };

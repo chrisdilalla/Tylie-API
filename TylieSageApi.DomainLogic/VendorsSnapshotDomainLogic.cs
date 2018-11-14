@@ -20,7 +20,7 @@ namespace TylieSageApi.DomainLogic
 
         public VendorsSnapshotResponseDto GetVendorsSnapshot(string companyID, DateTime lastUpdatedDate)
         {
-            VendorsSnapshotResponseDto responseDto = _vendorRepository.GetByCompanyId(companyID, lastUpdatedDate);
+            VendorsSnapshotResponseDto responseDto = _vendorRepository.GetByCompanyIdAndLastUpdate(companyID, lastUpdatedDate);
             return responseDto;
         }
     }
