@@ -10,21 +10,22 @@ namespace TylieSageApi.Data
 {
     public interface IVendorRepository
     {
-        VendorsSnapshotResponseDto GetByCompanyId(string companyId);
+        VendorsSnapshotResponseDto GetByCompanyId(string companyId, DateTime lastUpdatedDate);
     }
 
     public class VendorRepository : BaseRepository, IVendorRepository
     {
-        public VendorsSnapshotResponseDto GetByCompanyId(string companyId)
+        public VendorsSnapshotResponseDto GetByCompanyId(string companyId, DateTime lastUpdatedDate)
         {
-            var parameters = new {CompanyId = companyId};
+            var parameters = new {CompanyId = companyId, LastUpdatedDate = lastUpdatedDate };
             VendorsSnapshotResponseDto resultDto = new VendorsSnapshotResponseDto();
             IEnumerable<VendorsSnapshotResponseDto.VendorsSnapshotItem> list = Query<VendorsSnapshotResponseDto.VendorsSnapshotItem>(
                 @"select Companyid, vendkey as [Key], Vendid,Vendname, 
-                    case when status =1 then 'Active' when status=2 then 'Inactive'
-                    when status=3 then 'Temporary'
-                    when status=4 then 'Deleted' end
-                    as Status from tapvendor",
+                        case when status =1 then 'Active' when status=2 then 'Inactive'
+                        when status=3 then 'Temporary'
+                        when status=4 then 'Deleted' end
+                        as Status from tapvendor
+                    where companyid=@CompanyId and UpdateDate>=@LastUpdatedDate",
                 parameters);
             resultDto.Data = list;
             return resultDto;

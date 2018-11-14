@@ -22,7 +22,7 @@ namespace TylieSageApi.DomainLogic
 
         public ContractPricingSnapshotResponseDto GetContractPricingSnapshot(string companyID, DateTime lastUpdatedDate)
         {
-            ContractPricingSnapshotResponseDto responseDto = _contractPricingRepository.GetByCompanyId(companyID);
+            ContractPricingSnapshotResponseDto responseDto = _contractPricingRepository.GetByCompanyId(companyID, lastUpdatedDate);
             return responseDto;
         }
     }
