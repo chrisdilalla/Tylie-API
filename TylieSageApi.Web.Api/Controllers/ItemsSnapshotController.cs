@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Http;
+using System.Web.Http.Description;
 using TylieSageApi.Data.Entities.DataTransferObjects.Response;
 using TylieSageApi.DomainLogic;
 using TylieSageApi.Web.Api.Controllers.Abstract;
@@ -18,6 +20,7 @@ namespace TylieSageApi.Web.Api.Controllers
             _itemsSnapshotDomainLogic = new ItemsSnapshotDomainLogic();
         }
 
+        [ResponseType(typeof(ItemsSnapshotResponseDto))]
         [Route("items/" + Constants.RouteWithCompanyAndDate)]
         [ValidateActionParameters]
         public IHttpActionResult Get([MinLength(1)][MaxLength(3)]string companyID,

@@ -20,7 +20,7 @@ namespace TylieSageApi.Data
             var parameters = new {CompanyId = companyId, LastUpdatedDate = lastUpdatedDate };
             VendorsSnapshotResponseDto resultDto = new VendorsSnapshotResponseDto();
             IEnumerable<VendorsSnapshotResponseDto.VendorsSnapshotItem> list = Query<VendorsSnapshotResponseDto.VendorsSnapshotItem>(
-                @"select Companyid, vendkey as [Key], Vendid,Vendname, 
+                @"select Companyid, vendkey as [Key], Vendid as [VendorID],Vendname, 
                         case when status =1 then 'Active' when status=2 then 'Inactive'
                         when status=3 then 'Temporary'
                         when status=4 then 'Deleted' end

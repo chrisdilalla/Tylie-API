@@ -3,7 +3,7 @@ using TylieSageApi.Data.Entities.DataTransferObjects.Response.Base;
 
 namespace TylieSageApi.Data.Entities.DataTransferObjects.Response
 {
-    public class ContractPricingSnapshotResponseDto : BaseResponseDtoWithErrorLinks
+    public class ContractPricingSnapshotResponseDto : BaseResponseDto
     {
         public ContractPricingSnapshotResponseDto()
         {
@@ -22,7 +22,7 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Response
             public string ItemID { get; set; }
             public string ShortDesc { get; set; }
             public string EffectiveDate { get; set; }
-            public decimal Amount { get; set; }
+            //public decimal Amount { get; set; }
             public string Status { get; set; }
 
 

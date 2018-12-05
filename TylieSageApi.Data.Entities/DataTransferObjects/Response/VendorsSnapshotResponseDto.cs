@@ -3,7 +3,7 @@ using TylieSageApi.Data.Entities.DataTransferObjects.Response.Base;
 
 namespace TylieSageApi.Data.Entities.DataTransferObjects.Response
 {
-    public class VendorsSnapshotResponseDto : BaseResponseDtoWithErrorLinks
+    public class VendorsSnapshotResponseDto : BaseResponseDto
     {
         public IEnumerable<VendorsSnapshotItem> Data { get; set; }
 
