@@ -40,7 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContractPricingSnapshotDomainLogic.cs" />
-    <Compile Include="PurchaseOrderDomainLogic.cs" />
     <Compile Include="SalesOrderDomainLogic.cs" />
     <Compile Include="Utils\ApiPutPostResult.cs" />
     <Compile Include="Utils\WebApiInteraction.cs" />

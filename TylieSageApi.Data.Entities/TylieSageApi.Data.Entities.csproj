@@ -38,8 +38,10 @@
     <Compile Include="DataTransferObjects\Abstract\BaseDto.cs" />
     <Compile Include="DataTransferObjects\CallbackRequest\SalesOrderCallbackRequestDto.cs" />
     <Compile Include="DataTransferObjects\CallbackRequest\PurchaseOrderCallbackRequestDto.cs" />
-    <Compile Include="DataTransferObjects\Request\PurchaseOrderRequestDto.cs" />
-    <Compile Include="DataTransferObjects\Request\SalesOrderRequestDto.cs" />
+    <Compile Include="DataTransferObjects\Request\SalesOrder\PurchaseOrderItemInSalesOrder.cs" />
+    <Compile Include="DataTransferObjects\Request\SalesOrder\PurchaseOrderItem.cs" />
+    <Compile Include="DataTransferObjects\Request\SalesOrder\SalesOrderItem.cs" />
+    <Compile Include="DataTransferObjects\Request\SalesOrder\SalesOrderRequestDto.cs" />
     <Compile Include="DataTransferObjects\Request\CustomerSnapshotRequestDto.cs" />
     <Compile Include="DataTransferObjects\Response\Base\BaseResponseDtoWithErrorLinks.cs" />
     <Compile Include="DataTransferObjects\Response\Base\BaseResponseDto.cs" />

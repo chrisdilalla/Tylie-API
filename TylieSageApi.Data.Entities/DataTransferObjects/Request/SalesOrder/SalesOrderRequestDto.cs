@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TylieSageApi.Data.Entities.DataTransferObjects.Abstract;
+using TylieSageApi.Data.Entities.DataTransferObjects.Request.SalesOrder;
 
 namespace TylieSageApi.Data.Entities.DataTransferObjects.Request
 {
@@ -23,23 +24,17 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Request
         public string CustJobNo { get; set; }
         [MaxLength(2083)]
         public string CallbackUrl { get; set; }
-        public IList<SalesOrderItem> Lines { get; set; }
 
-        public class SalesOrderItem
-        {
-            [MaxLength(50)]
-            public string PlatformID { get; set; }
-            [Required]
-            [MaxLength(30)]
-            public string ItemID { get; set; }
-            [Required]
-            public decimal QtyOrd { get; set; }
-            [Required]
-            [MaxLength(15)]
-            public string WorkOrderNo { get; set; }
-            public decimal Spots { get; set; }
-            [MaxLength(255)]
-            public string Comment { get; set; }
-        }
+        public string Brand { get; set; }
+        public string Product { get; set; }
+        public string OrderedBy { get; set; }
+        public string BilledTo { get; set; }
+        public string CostCenter { get; set; }
+        public string AdditionalInfo { get; set; }
+
+        public IList<SalesOrderItem> Lines { get; set; }
+        public IList<PurchaseOrderItemInSalesOrder> PurchaseOrders { get; set; }
+
+        
     }
 }
