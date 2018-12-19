@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Http;
 using TylieSageApi.Data.Entities.DataTransferObjects;
+using System.Web.Http.Description;
 using TylieSageApi.Data.Entities.DataTransferObjects.Request;
+using TylieSageApi.Data.Entities.DataTransferObjects.Response;
 using TylieSageApi.Data.Entities.Entities;
 using TylieSageApi.DomainLogic;
 using TylieSageApi.Web.Api.Controllers.Abstract;
@@ -21,6 +23,7 @@ namespace TylieSageApi.Web.Api.Controllers
             _customerSnapshotDomainLogic = new CustomerSnapshotDomainLogic();
         }
 
+        [ResponseType(typeof(IEnumerable<Customer>))]
         [Route("customers/{companyID}")]
         [ValidateActionParameters]
         public IHttpActionResult Get([MinLength(1)][MaxLength(3)]string companyID)
