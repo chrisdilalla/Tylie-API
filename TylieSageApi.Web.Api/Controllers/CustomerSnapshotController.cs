@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Http;
+using TylieSageApi.Data.Entities.DataTransferObjects;
 using TylieSageApi.Data.Entities.DataTransferObjects.Request;
 using TylieSageApi.Data.Entities.Entities;
 using TylieSageApi.DomainLogic;
@@ -27,7 +28,7 @@ namespace TylieSageApi.Web.Api.Controllers
             if (!ModelState.IsValid)
                 ThrowModelStateException(ModelState);
 
-            IEnumerable<Customer> responseDto = _customerSnapshotDomainLogic.GetCustomers(companyID);
+            IEnumerable<CustomerSnapshotItem> responseDto = _customerSnapshotDomainLogic.GetCustomers(companyID);
             return Ok(responseDto);
         }
 

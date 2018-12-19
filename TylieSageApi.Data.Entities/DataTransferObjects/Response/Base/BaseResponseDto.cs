@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Text;
 using TylieSageApi.Data.Entities.DataTransferObjects.Abstract;
 
 namespace TylieSageApi.Data.Entities.DataTransferObjects.Response.Base
@@ -9,11 +12,28 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Response.Base
         public BaseResponseDto()
         {
             Errors = new List<Error>();
-            Status = (int)HttpStatusCode.OK;
+            Status = (int) HttpStatusCode.OK;
         }
 
         public int Status { get; set; }
         public IList<Error> Errors { get; set; }
+
+        public void AddError(string title, string detail)
+        {
+            Errors.Add(new Error(title, detail));
+        }
+
+        public void AddErrorsFromException(string title, Exception exception)
+        {
+            bool isFirst = true;
+            while (exception != null)
+            {
+                string exceptionText = exception.Message;
+                Errors.Add(new Error(isFirst ? title : null, exceptionText));
+                isFirst = false;
+                exception = exception.InnerException;
+            }
+        }
 
         public class Error
         {

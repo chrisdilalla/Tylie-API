@@ -13,13 +13,19 @@
         public string StateID { get; set; }
         public string CountryID { get; set; }
         public string PostalCode { get; set; }
-        public string CntctName { get; set; }
-        public string CntctTitle { get; set; }
-        public string CntctFax { get; set; }
-        public string CntctPhone { get; set; }
-        public string CntctEmail { get; set; }
+        public string ContactName { get; set; }
+        public string ContactTitle { get; set; }
+        public string ContactFax { get; set; }
+        public string ContactPhone { get; set; }
+        public string ContactEmail { get; set; }
         public bool PrintAck { get; set; }
         public bool RequireAck { get; set; }
+
+        public string Status { get; set; }
+        public int BrandKey { get; set; }
+        public string BrandID { get; set; }
         public string Brand { get; set; }
+        public string BrandStatus { get; set; }
+        public int ImportStatus { get; set; }
     }
 }

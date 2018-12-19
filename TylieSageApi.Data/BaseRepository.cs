@@ -13,10 +13,21 @@ namespace TylieSageApi.Data
     {
         private static volatile string _connectionString;
         private static readonly object ConnectionStringLock;
-        
+        private string _tableName;
+        protected string TableName => _tableName;
+
         static BaseRepository()
         {
             ConnectionStringLock = new object();
+        }
+
+        protected BaseRepository(string tableName)
+        {
+            _tableName = tableName;
+        }
+
+        protected BaseRepository()
+        {
         }
 
         protected virtual IEnumerable<T> Query<T>(string sql, object param = null,
@@ -26,6 +37,20 @@ namespace TylieSageApi.Data
             using (SqlConnection sqlConnection = GetSqlConnection())
             {
                 return sqlConnection.Query<T>(sql, param, transaction, buffered, commandTimeout, commandType);
+            }
+        }
+
+        //
+        // Summary:
+        //     Execute parameterized SQL
+        //
+        // Returns:
+        //     Number of rows affected
+        public virtual int Execute(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = default(int?), CommandType? commandType = default(CommandType?))
+        {
+            using (SqlConnection sqlConnection = GetSqlConnection())
+            {
+                return sqlConnection.Execute(sql, param, transaction, commandTimeout, commandType);
             }
         }
 
