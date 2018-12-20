@@ -52,6 +52,7 @@
     <Compile Include="DataTransferObjects\Response\VendorsSnapshotResponseDto.cs" />
     <Compile Include="DataTransferObjects\Response\ItemsSnapshotResponseDto.cs" />
     <Compile Include="DataTransferObjects\Response\CustomerSnapshotResponseDto.cs" />
+    <Compile Include="Entities\SalesOrder.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\TransactionLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

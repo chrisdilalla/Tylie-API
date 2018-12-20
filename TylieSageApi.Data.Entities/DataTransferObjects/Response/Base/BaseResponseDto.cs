@@ -20,11 +20,13 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Response.Base
 
         public void AddError(string title, string detail)
         {
+            Status = (int)HttpStatusCode.BadRequest;
             Errors.Add(new Error(title, detail));
         }
 
         public void AddErrorsFromException(string title, Exception exception)
         {
+            Status = (int)HttpStatusCode.BadRequest;
             bool isFirst = true;
             while (exception != null)
             {

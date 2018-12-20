@@ -22,13 +22,13 @@ namespace TylieSageApi.Web.Api.Controllers
         [ResponseType(typeof(SalesOrderResponseDto))]
         [Route("salesorders/{companyID}")]
         [ValidateActionParameters]
-        public async Task<IHttpActionResult> Post([MinLength(1)][MaxLength(3)]string companyID,
+        public IHttpActionResult Post([MinLength(1)][MaxLength(3)]string companyID,
             [Required][FromBody]SalesOrderRequestDto inputDto)
         {
             if (!ModelState.IsValid)
                 ThrowModelStateException(ModelState);
 
-            SalesOrderResponseDto result = await _salesOrderDomainLogic.AddSalesOrder(companyID, inputDto);
+            SalesOrderResponseDto result = _salesOrderDomainLogic.AddSalesOrder(companyID, inputDto);
             return Ok(result);
         }
     }

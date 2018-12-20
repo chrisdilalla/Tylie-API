@@ -4,6 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
+using TylieSageApi.Common.Exceptions;
 using TylieSageApi.Data.Entities.DataTransferObjects.Request;
 using TylieSageApi.Data.Entities.DataTransferObjects.Response;
 using TylieSageApi.Data.Entities.Entities;
@@ -13,7 +15,8 @@ namespace TylieSageApi.Data
     public interface ICustomerRepository
     {
         IEnumerable<Customer> GetByCompanyId(string companyId);
-        int MigrateCustomersToRealTables(string guid);
+        void AddCustomers(IList<Customer> data);
+        void MigrateCustomersToRealTables(string guid);
     }
 
     public class CustomerRepository : BaseRepository, ICustomerRepository
@@ -113,24 +116,16 @@ namespace TylieSageApi.Data
             }
         }
 
-        public int MigrateCustomersToRealTables(string guid)
+        public void MigrateCustomersToRealTables(string guid)
         {
-            int result;
-            result = Query<int>("spARCustomerImport_Tylie",
-                new
-                {
-                    oContinue = 0,
-                    iCancel = 0,
-                    iSessionKey = guid,
-                    iCompanyID = 0, // Supported.Enterprise Company.
-                    iRptOption = 0,
-                    iPrintWarnings = 0,
-                    iUseStageTable = 1,
-                    oRecsProcessed = 0,
-                    oFailedRecs = 0,
-                    oTotalRecs = 0
-                }, null, true, null, CommandType.StoredProcedure).SingleOrDefault();
-            return result;
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            string retValName = "_oRetVal";
+            string storedProcName = "spARCustomerImport_Tylie";
+            dynamicParameters.Add(retValName, dbType: DbType.Int32, direction: ParameterDirection.Output);
+            Query<int>(storedProcName, dynamicParameters, null, true, null, CommandType.StoredProcedure).SingleOrDefault();
+            int result = dynamicParameters.Get<int>(retValName);
+            if (result != 1)
+                throw new StoredProcedureException(storedProcName, result);
         }
     }
 }

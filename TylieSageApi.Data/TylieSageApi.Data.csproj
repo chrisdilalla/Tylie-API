@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
     <Compile Include="ContractPricingRepository.cs" />
+    <Compile Include="SalesOrderRepository.cs" />
     <Compile Include="TransactionLogRepository.cs" />
     <Compile Include="VendorRepository.cs" />
     <Compile Include="IItemRepository.cs" />
@@ -56,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TylieSageApi.Common\TylieSageApi.Common.csproj">
+      <Project>{09ebf066-5d0b-4ff1-b3fc-549f628a6868}</Project>
+      <Name>TylieSageApi.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TylieSageApi.Data.Entities\TylieSageApi.Data.Entities.csproj">
       <Project>{27737e2f-02af-47ef-b49c-45d4fbfeb079}</Project>
       <Name>TylieSageApi.Data.Entities</Name>

@@ -20,7 +20,7 @@ namespace TylieSageApi.DomainLogic
 
     public class CustomerSnapshotDomainLogic : ICustomerSnapshotDomainLogic
     {
-        private CustomerRepository _customerRepository;
+        private ICustomerRepository _customerRepository;
         private ITransactionLogRepository _transactionLogRepository;
         private IUtils _utils;
         public CustomerSnapshotDomainLogic()
@@ -34,6 +34,7 @@ namespace TylieSageApi.DomainLogic
         {
             BaseResponseDto result = new BaseResponseDto();
             string transitID = _utils.GetGuidString();
+            result.TransitID = transitID;
             TransactionLog transactionLog;
             try
             {
@@ -57,7 +58,7 @@ namespace TylieSageApi.DomainLogic
             {
                 try
                 {
-                    //_customerRepository.MigrateCustomersToRealTables(transitID);
+                    _customerRepository.MigrateCustomersToRealTables(transitID);
                     transactionLog = new TransactionLog(transitID, EventType.CustomerImportSP_Complete,
                         "Customer import stored procedure has completed successfully");
                 }

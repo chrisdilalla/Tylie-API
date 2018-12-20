@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\EventType.cs" />
+    <Compile Include="Exceptions\StoredProcedureException.cs" />
+    <Compile Include="Exceptions\TylieSageApiException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
