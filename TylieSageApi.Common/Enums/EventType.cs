@@ -7,6 +7,9 @@
         CustomerImportSP_Complete = 2,
         SalesOrderDataInsert = 3,
         SalesOrderInsertSP_Called = 4,
-        SalesOrderInsertSP_Complete = 5
+        SalesOrderInsertSP_Complete = 5,
+        VendorsSnapshotDataRetrievalCompleted = 6,
+        ItemsSnapshotDataRetrievalCompleted = 7,
+        ContractPricingSnapshotDataRetrievalCompleted = 8,
     }
 }

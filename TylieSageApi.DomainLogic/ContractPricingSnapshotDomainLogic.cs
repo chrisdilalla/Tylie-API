@@ -28,7 +28,7 @@ namespace TylieSageApi.DomainLogic
         public ContractPricingSnapshotResponseDto GetContractPricingSnapshot(string companyID, DateTime lastUpdatedDate)
         {
             Func<ContractPricingSnapshotResponseDto> function = () => _contractPricingRepository.GetByCompanyIdAndLastUpdate(companyID, lastUpdatedDate);
-            ContractPricingSnapshotResponseDto result = _sharedDomainLogic.GetDataAndLogTransaction(function, "Contract pricing snapshot");
+            ContractPricingSnapshotResponseDto result = _sharedDomainLogic.GetDataAndLogTransaction(function, "Contract pricing snapshot", EventType.ContractPricingSnapshotDataRetrievalCompleted);
             return result;
         }
     }

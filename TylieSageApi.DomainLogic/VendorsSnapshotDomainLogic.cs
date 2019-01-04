@@ -26,7 +26,7 @@ namespace TylieSageApi.DomainLogic
         public VendorsSnapshotResponseDto GetVendorsSnapshot(string companyID, DateTime lastUpdatedDate)
         {
             Func<VendorsSnapshotResponseDto> function = () => _vendorRepository.GetByCompanyIdAndLastUpdate(companyID, lastUpdatedDate); ;
-            VendorsSnapshotResponseDto result = _sharedDomainLogic.GetDataAndLogTransaction(function, "Vendors snapshot");
+            VendorsSnapshotResponseDto result = _sharedDomainLogic.GetDataAndLogTransaction(function, "Vendors snapshot", EventType.VendorsSnapshotDataRetrievalCompleted);
             return result;
         }
     }

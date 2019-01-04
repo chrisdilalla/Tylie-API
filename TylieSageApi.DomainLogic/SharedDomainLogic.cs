@@ -22,7 +22,7 @@ namespace TylieSageApi.DomainLogic
             _utils = new Utils.Utils();
         }
 
-        internal T GetDataAndLogTransaction<T>(Func<T> function, string dataName) where T: BaseResponseDto
+        internal T GetDataAndLogTransaction<T>(Func<T> function, string dataName, EventType eventType) where T: BaseResponseDto
         {
             TransactionLog transactionLog;
             T result = default(T);
@@ -33,14 +33,14 @@ namespace TylieSageApi.DomainLogic
                 transitId = _utils.GetGuidString();
                 result = function();
                 result.TransitID = transitId;
-                transactionLog = new TransactionLog(transitId, EventType.SalesOrderDataInsert,
+                transactionLog = new TransactionLog(transitId, eventType,
                     $"{dataName} data retrieved successfully");
                 _transactionLogRepository.AddRecord(transactionLog);
             }
             catch (Exception exception)
             {
                 string errorTitle = $"{dataName} data retrieval error";
-                transactionLog = new TransactionLog(transitId, EventType.SalesOrderDataInsert,
+                transactionLog = new TransactionLog(transitId, eventType,
                     $"{errorTitle} {exception.Message}");
                 _transactionLogRepository.AddRecord(transactionLog);
                 result?.AddErrorsFromException(errorTitle, exception);
