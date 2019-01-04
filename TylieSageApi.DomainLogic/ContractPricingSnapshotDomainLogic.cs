@@ -1,7 +1,10 @@
 ﻿using System;
+using TylieSageApi.Common;
 using TylieSageApi.Data;
 using TylieSageApi.Data.Entities.DataTransferObjects.Response;
+using TylieSageApi.Data.Entities.Entities;
 using TylieSageApi.DomainLogic.Exceptions;
+using TylieSageApi.DomainLogic.Utils;
 
 namespace TylieSageApi.DomainLogic
 {
@@ -13,17 +16,20 @@ namespace TylieSageApi.DomainLogic
     public class ContractPricingSnapshotDomainLogic : IContractPricingSnapshotDomainLogic
     {
         private IContractPricingRepository _contractPricingRepository;
-
+        private SharedDomainLogic _sharedDomainLogic;
+        
         public ContractPricingSnapshotDomainLogic()
         {
             _contractPricingRepository = new ContractPricingRepository();
+            _sharedDomainLogic = new SharedDomainLogic();
         }
 
 
         public ContractPricingSnapshotResponseDto GetContractPricingSnapshot(string companyID, DateTime lastUpdatedDate)
         {
-            ContractPricingSnapshotResponseDto responseDto = _contractPricingRepository.GetByCompanyIdAndLastUpdate(companyID, lastUpdatedDate);
-            return responseDto;
+            Func<ContractPricingSnapshotResponseDto> function = () => _contractPricingRepository.GetByCompanyIdAndLastUpdate(companyID, lastUpdatedDate);
+            ContractPricingSnapshotResponseDto result = _sharedDomainLogic.GetDataAndLogTransaction(function, "Contract pricing snapshot");
+            return result;
         }
     }
 }
