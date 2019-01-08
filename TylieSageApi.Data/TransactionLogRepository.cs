@@ -1,10 +1,14 @@
-﻿using TylieSageApi.Data.Entities.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using TylieSageApi.Data.Entities.Entities;
 
 namespace TylieSageApi.Data
 {
     public interface ITransactionLogRepository
     {
         void AddRecord(TransactionLog record);
+        IList<TransactionLog> ReadByTransitId(Guid transitId);
     }
 
     public class TransactionLogRepository: BaseRepository, ITransactionLogRepository
@@ -19,6 +23,13 @@ namespace TylieSageApi.Data
             string sql = $@"insert into {TableName} (TransitID, [TimeStamp], EventType, EventDetails)
                 values (@TransitID, @TimeStamp, @EventType, @EventDetails)";
             Execute(sql, record);
+        }
+
+        public IList<TransactionLog> ReadByTransitId(Guid transitId)
+        {
+            string sql = $@"select * from {TableName} where TransitId = @TransitId";
+            IList<TransactionLog> result = Query<TransactionLog>(sql, new { TransitId = transitId.ToString() }).ToList();
+            return result;
         }
     }
 }

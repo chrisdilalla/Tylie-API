@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TransactionLogDomainLogic.cs" />
     <Compile Include="SharedDomainLogic.cs" />
     <Compile Include="ContractPricingSnapshotDomainLogic.cs" />
     <Compile Include="Infrastructure\AutoMapperConfig.cs" />

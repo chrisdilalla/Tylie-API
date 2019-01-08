@@ -9,12 +9,16 @@ namespace TylieSageApi.Data.Entities.Entities
 {
     public class TransactionLog
     {
-        public string TransitID { get; set; }
+        public Guid TransitID { get; set; }
         public DateTime TimeStamp { get; set; }
         public int EventType { get; set; }
         public string EventDetails { get; set; }
 
-        public TransactionLog(string transitID,
+        public TransactionLog()
+        {
+        }
+
+        public TransactionLog(Guid transitID,
                             EventType eventType,
                             string eventDetails)
         {
@@ -22,6 +26,15 @@ namespace TylieSageApi.Data.Entities.Entities
             TimeStamp = DateTime.UtcNow;
             EventType = (int)eventType;
             EventDetails = eventDetails;
+        }
+
+        public TransactionLog(string transitID,
+            EventType eventType,
+            string eventDetails) :
+            this(Guid.Parse(transitID),
+            eventType,
+            eventDetails)
+        {
         }
     }
 }

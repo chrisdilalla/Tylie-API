@@ -47,6 +47,7 @@
     <Compile Include="DataTransferObjects\Response\Base\BaseResponseDtoWithErrorLinks.cs" />
     <Compile Include="DataTransferObjects\Response\Base\BaseResponseDto.cs" />
     <Compile Include="DataTransferObjects\Response\PurchaseOrderResponseDto.cs" />
+    <Compile Include="DataTransferObjects\Response\GetTransactionLogResponseDto.cs" />
     <Compile Include="DataTransferObjects\Response\SalesOrderResponseDto.cs" />
     <Compile Include="DataTransferObjects\Response\ContractPricingSnapshotResponseDto.cs" />
     <Compile Include="DataTransferObjects\Response\VendorsSnapshotResponseDto.cs" />

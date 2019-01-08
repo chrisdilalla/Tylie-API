@@ -188,6 +188,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\Abstract\BaseController.cs" />
     <Compile Include="Controllers\ContractPricingSnapshotController.cs" />
+    <Compile Include="Controllers\TransactionLogController.cs" />
     <Compile Include="Controllers\SalesOrderController.cs" />
     <Compile Include="Controllers\VendorsSnapshotController.cs" />
     <Compile Include="Controllers\ItemsSnapshotController.cs" />
