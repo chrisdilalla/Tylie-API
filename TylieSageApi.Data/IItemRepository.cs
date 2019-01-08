@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TylieSageApi.Data.Entities.DataTransferObjects.Response;
-using TylieSageApi.Data.Entities.Entities;
 
 namespace TylieSageApi.Data
 {

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using TylieSageApi.Data.Entities.DataTransferObjects;
 using TylieSageApi.Data.Entities.DataTransferObjects.Request;
+using TylieSageApi.Data.Entities.DataTransferObjects.Request.SalesOrder;
 using TylieSageApi.Data.Entities.Entities;
 
 namespace TylieSageApi.DomainLogic.Infrastructure
@@ -23,7 +24,11 @@ namespace TylieSageApi.DomainLogic.Infrastructure
                     .ForMember(item => item.CntctFax, configExpressionEntity => configExpressionEntity.MapFrom(entity => entity.ContactFax))
                     .ForMember(item => item.CntctPhone, configExpressionEntity => configExpressionEntity.MapFrom(entity => entity.ContactPhone))
                     .ForMember(item => item.CntctEmail, configExpressionEntity => configExpressionEntity.MapFrom(entity => entity.ContactEmail));
-                ;
+                cfg.CreateMap<SalesOrderRequestDto, SalesOrder>();
+                cfg.CreateMap<SalesOrderItem, SalesOrder>();
+                cfg.CreateMap<PurchaseOrderItem, PurchaseOrder>();
+                cfg.CreateMap<PurchaseOrderItemInSalesOrder, PurchaseOrder>();
+                
             });
         }
     }

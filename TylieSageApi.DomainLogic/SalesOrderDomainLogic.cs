@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TylieSageApi.Common;
 using TylieSageApi.Data;
-using TylieSageApi.Data.Entities.DataTransferObjects.CallbackRequest;
 using TylieSageApi.Data.Entities.DataTransferObjects.Request;
 using TylieSageApi.Data.Entities.DataTransferObjects.Response;
-using TylieSageApi.Data.Entities.DataTransferObjects.Response.Base;
 using TylieSageApi.Data.Entities.Entities;
 using TylieSageApi.DomainLogic.Utils;
 
@@ -20,12 +18,14 @@ namespace TylieSageApi.DomainLogic
     public class SalesOrderDomainLogic : ISalesOrderDomainLogic
     {
         private ISalesOrderRepository _salesOrderRepository;
+        private IPurchaseOrderRepository _purchaseOrderRepository;
         private ITransactionLogRepository _transactionLogRepository;
         private IUtils _utils;
 
         public SalesOrderDomainLogic()
         {
             _salesOrderRepository = new SalesOrderRepository();
+            _purchaseOrderRepository = new PurchaseOrderRepository();
             _transactionLogRepository = new TransactionLogRepository();
             _utils = new Utils.Utils();
         }
@@ -38,8 +38,25 @@ namespace TylieSageApi.DomainLogic
             TransactionLog transactionLog;
             try
             {
-                List<SalesOrder> customers = AutoMapper.Mapper.Map<List<SalesOrder>>(inputDto);
-                _salesOrderRepository.AddSalesOrders(customers);
+                List<SalesOrder> orders = AutoMapper.Mapper.Map<List<SalesOrder>>(inputDto.Lines);
+                foreach (SalesOrder salesOrder in orders)
+                {
+                    AutoMapper.Mapper.Map<SalesOrderRequestDto, SalesOrder>(inputDto, salesOrder);
+                }
+
+                _salesOrderRepository.AddSalesOrders(orders);
+
+                foreach (PurchaseOrderItemInSalesOrder purchaseOrderDto in inputDto.PurchaseOrders)
+                {
+                    List<PurchaseOrder> purchaseOrders =
+                        AutoMapper.Mapper.Map<List<PurchaseOrder>>(purchaseOrderDto.Lines);
+                    foreach (PurchaseOrder purchaseOrder in purchaseOrders)
+                    {
+                        AutoMapper.Mapper.Map<PurchaseOrderItemInSalesOrder, PurchaseOrder>(purchaseOrderDto, purchaseOrder);
+                    }
+                    _purchaseOrderRepository.AddPurchaseOrders(purchaseOrders);
+                }
+
                 transactionLog = new TransactionLog(transitID, EventType.SalesOrderDataInsert,
                     "SalesOrder Data Posted Successfully");
                 _transactionLogRepository.AddRecord(transactionLog);
@@ -72,18 +89,6 @@ namespace TylieSageApi.DomainLogic
             transactionLog = new TransactionLog(transitID, EventType.SalesOrderInsertSP_Called,
                 "Sales orders insert stored procedure is called");
             _transactionLogRepository.AddRecord(transactionLog);
-            return result;
-        }
-
-        private async Task<SalesOrderResponseDto> QueueSalesOrder(string companyID, SalesOrderRequestDto inputDto)
-        {
-            SalesOrderResponseDto result = await Task.Factory.StartNew<SalesOrderResponseDto>(() =>
-           {
-               System.Threading.Thread.Sleep(10000); // simulates a long running operation
-               WebApiInteraction webApiInteraction = new WebApiInteraction();
-               webApiInteraction.PostAsync<SalesOrderCallbackRequestDto, object>(inputDto.CallbackUrl, new SalesOrderCallbackRequestDto());
-               return new SalesOrderResponseDto();
-           });
             return result;
         }
     }

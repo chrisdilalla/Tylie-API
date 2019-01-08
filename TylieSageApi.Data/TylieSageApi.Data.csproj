@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
     <Compile Include="ContractPricingRepository.cs" />
+    <Compile Include="PurchaseOrderRepository.cs" />
     <Compile Include="SalesOrderRepository.cs" />
     <Compile Include="TransactionLogRepository.cs" />
     <Compile Include="VendorRepository.cs" />
