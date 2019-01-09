@@ -27,17 +27,17 @@ namespace TylieSageApi.Web.Api.Controllers
             _customerSnapshotDomainLogic = new CustomerSnapshotDomainLogic();
         }
 
-        [ResponseType(typeof(IEnumerable<Customer>))]
-        [Route("customers/{companyID}")]
-        [ValidateActionParameters]
-        public IHttpActionResult Get([MinLength(1)][MaxLength(3)]string companyID)
-        {
-            if (!ModelState.IsValid)
-                ThrowModelStateException(ModelState);
+        //[ResponseType(typeof(IEnumerable<Customer>))]
+        //[Route("customers/{companyID}")]
+        //[ValidateActionParameters]
+        //public IHttpActionResult Get([MinLength(1)][MaxLength(3)]string companyID)
+        //{
+        //    if (!ModelState.IsValid)
+        //        ThrowModelStateException(ModelState);
 
-            IEnumerable<CustomerSnapshotItem> responseDto = _customerSnapshotDomainLogic.GetCustomers(companyID);
-            return Ok(responseDto);
-        }
+        //    IEnumerable<CustomerSnapshotItem> responseDto = _customerSnapshotDomainLogic.GetCustomers(companyID);
+        //    return Ok(responseDto);
+        //}
 
         [Route("customers/{companyID}")]
         [ValidateActionParameters]
