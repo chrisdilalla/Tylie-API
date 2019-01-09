@@ -5,6 +5,7 @@
         public string CompanyID { get; set; }
         public string Key { get; set; }
         public string CustID { get; set; }
+        public string CustName { get; set; }
         public string CustClassID { get; set; }
         public string CustClassName { get; set; }
         public string AddrLine1 { get; set; }

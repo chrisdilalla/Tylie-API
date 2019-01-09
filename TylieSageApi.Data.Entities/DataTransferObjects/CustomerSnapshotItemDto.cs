@@ -18,6 +18,10 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects
         [Required]
         [MaxLength(12)]
         public string CustomerID { get; set; }
+
+        [MaxLength(50)]
+        public string CustName { get; set; }
+
         [Required]
         [MaxLength(12)]
         public string CustClassID { get; set; }

@@ -7,7 +7,5 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Request
     public class CustomerSnapshotRequestDto : BaseDto
     {
         public IList<CustomerSnapshotItem> Data { get; set; }
-
-        
     }
 }
