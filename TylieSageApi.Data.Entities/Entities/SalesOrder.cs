@@ -16,5 +16,7 @@
         public decimal? Spots { get; set; }
         public string Comment { get; set; }
         public int? Status { get; set; }
+        public int? Length { get; set; }
+        public decimal? AddlOrDiscount { get; set; }
     }
 }
