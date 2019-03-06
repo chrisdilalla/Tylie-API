@@ -18,5 +18,6 @@
         public int? Status { get; set; }
         public int? Length { get; set; }
         public decimal? AddlOrDiscount { get; set; }
+        public bool? ProBono { get; set; }
     }
 }
