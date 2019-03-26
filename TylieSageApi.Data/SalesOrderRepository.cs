@@ -33,7 +33,10 @@ namespace TylieSageApi.Data
                 [Status],
                 [Length],
                 [AddlOrDiscount],
-                [ProBono])
+                [ProBono],
+                [Destination],
+                [CostCenter],
+                [AdditionalInfo])
              values (
                 @CustID,
                 @ShiptoCustID,
@@ -50,7 +53,10 @@ namespace TylieSageApi.Data
                 @Status,
                 @Length,
                 @AddlOrDiscount,
-                @ProBono
+                @ProBono,
+                @Destination,
+                @CostCenter,
+                @AdditionalInfo
                 )";
             for (int itemNum = 0; itemNum < data.Count; itemNum++)
             {

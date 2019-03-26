@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TylieSageApi.Data.Entities.DataTransferObjects.Abstract;
-using TylieSageApi.Data.Entities.DataTransferObjects.Request.SalesOrder;
 
-namespace TylieSageApi.Data.Entities.DataTransferObjects.Request
+namespace TylieSageApi.Data.Entities.DataTransferObjects.Request.SalesOrder
 {
     public class SalesOrderRequestDto : BaseDto
     {
@@ -34,6 +33,7 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Request
         public int? Length { get; set; }
         public decimal? AddlOrDiscount { get; set; }
         public bool? ProBono { get; set; }
+        public int? Destination { get; set; }
 
         public IList<SalesOrderItem> Lines { get; set; }
         public IList<PurchaseOrderItemInSalesOrder> PurchaseOrders { get; set; }

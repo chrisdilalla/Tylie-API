@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using TylieSageApi.Common;
 using TylieSageApi.Data;
 using TylieSageApi.Data.Entities.DataTransferObjects.Request;
+using TylieSageApi.Data.Entities.DataTransferObjects.Request.SalesOrder;
 using TylieSageApi.Data.Entities.DataTransferObjects.Response;
 using TylieSageApi.Data.Entities.Entities;
 using TylieSageApi.DomainLogic.Utils;
