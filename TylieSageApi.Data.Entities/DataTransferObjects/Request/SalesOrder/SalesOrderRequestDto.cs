@@ -7,6 +7,10 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Request.SalesOrder
     public class SalesOrderRequestDto : BaseDto
     {
         [Required]
+        [MaxLength(10)]
+        public string SalesOrder { get; set; }
+
+        [Required]
         [MaxLength(12)]
         public string CustID { get; set; }
 

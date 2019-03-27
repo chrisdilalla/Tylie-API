@@ -3,6 +3,7 @@
     public class SalesOrder
     {
         public string RowKey { get; set; }
+        public string SoNumber { get; set; }
         public string CustID { get; set; }
         public string ShiptoCustID { get; set; }
         public string Trandate { get; set; }

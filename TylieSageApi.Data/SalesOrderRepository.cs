@@ -19,6 +19,7 @@ namespace TylieSageApi.Data
         public void AddSalesOrders(IList<SalesOrder> data)
         {
             string sql = @"insert into stgSOLine_Tylie (
+                [SoNumber],
                 [CustID],
                 [ShiptoCustID],
                 [Trandate],
@@ -39,6 +40,7 @@ namespace TylieSageApi.Data
                 [CostCenter],
                 [AdditionalInfo])
              values (
+                @SoNumber,
                 @CustID,
                 @ShiptoCustID,
                 @Trandate,
