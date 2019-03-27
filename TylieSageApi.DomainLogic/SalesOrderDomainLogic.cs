@@ -72,23 +72,23 @@ namespace TylieSageApi.DomainLogic
                 return result;
             }
 
-            Task.Factory.StartNew(() =>
-            {
-                try
-                {
-                    _salesOrderRepository.MigrateSalesOrdersToRealTables(transitID);
-                    transactionLog = new TransactionLog(transitID, EventType.SalesOrderInsertSP_Complete,
-                        "Sales orders insert stored procedure has completed successfully");
-                }
-                catch (Exception exception)
-                {
-                    transactionLog = new TransactionLog(transitID, EventType.SalesOrderInsertSP_Complete,
-                        $"Sales orders insert stored procedure completed with errors. {exception.Message}");
-                }
-                _transactionLogRepository.AddRecord(transactionLog);
-            });
             transactionLog = new TransactionLog(transitID, EventType.SalesOrderInsertSP_Called,
                 "Sales orders insert stored procedure is called");
+            _transactionLogRepository.AddRecord(transactionLog);
+
+            try
+            {
+                _salesOrderRepository.MigrateSalesOrdersToRealTables(transitID);
+                transactionLog = new TransactionLog(transitID, EventType.SalesOrderInsertSP_Complete,
+                    "Sales orders insert stored procedure has completed successfully");
+            }
+            catch (Exception exception)
+            {
+                const string commonErrorText = "Sales orders insert stored procedure completed with errors.";
+                transactionLog = new TransactionLog(transitID, EventType.SalesOrderInsertSP_Complete,
+                    $"{commonErrorText} {exception.Message}");
+                result.AddErrorsFromException(commonErrorText, exception);
+            }
             _transactionLogRepository.AddRecord(transactionLog);
             return result;
         }

@@ -118,12 +118,17 @@ namespace TylieSageApi.Data
         {
             DynamicParameters dynamicParameters = new DynamicParameters();
             string retValName = "_oRetVal";
+            string retMessageName = "message";
             string storedProcName = "spARCustomerImport_Tylie";
             dynamicParameters.Add(retValName, dbType: DbType.Int32, direction: ParameterDirection.Output);
+            dynamicParameters.Add(retMessageName, null, DbType.String, ParameterDirection.Output, 8000);
             Query<int>(storedProcName, dynamicParameters, null, true, null, CommandType.StoredProcedure).SingleOrDefault();
             int result = dynamicParameters.Get<int>(retValName);
             if (result != 1)
-                throw new StoredProcedureException(storedProcName, result);
+            {
+                string errorMessage = dynamicParameters.Get<string>(retMessageName);
+                throw new StoredProcedureException(storedProcName, result, errorMessage);
+            }
         }
     }
 }
