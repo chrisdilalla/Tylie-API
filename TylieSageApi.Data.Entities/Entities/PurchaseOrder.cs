@@ -13,5 +13,7 @@ namespace TylieSageApi.Data.Entities.Entities
         public string Comment { get; set; }
         public string Workorderno { get; set; }
         public int? Status { get; set; }
+        public int? Spots { get; set; }
+        public int? Destinations { get; set; }
     }
 }

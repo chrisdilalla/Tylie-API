@@ -21,7 +21,9 @@ namespace TylieSageApi.Data
                 [QtyOrd],
                 [Comment],
                 [Workorderno],
-                [Status])
+                [Status],
+                [Spots],
+                [Destinations])
              values (
                 @VendID,
                 @VendPO,
@@ -31,7 +33,9 @@ namespace TylieSageApi.Data
                 @QtyOrd,
                 @Comment,
                 @Workorderno,
-                @Status
+                @Status,
+                @Spots,
+                @Destinations
                 )";
             for (int itemNum = 0; itemNum < data.Count; itemNum++)
             {
