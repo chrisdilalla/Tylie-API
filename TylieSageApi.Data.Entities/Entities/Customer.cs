@@ -24,7 +24,7 @@
 
         public string Status { get; set; }
         public int BrandKey { get; set; }
-        public string BrandID { get; set; }
+        public string BrandId { get; set; }
         public string Brand { get; set; }
         public string BrandStatus { get; set; }
         public int ImportStatus { get; set; }

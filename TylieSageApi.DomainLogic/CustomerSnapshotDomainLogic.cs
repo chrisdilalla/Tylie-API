@@ -15,7 +15,7 @@ namespace TylieSageApi.DomainLogic
     public interface ICustomerSnapshotDomainLogic
     {
         BaseResponseDto AddCustomer(string companyID, CustomerSnapshotRequestDto inputDto);
-        IEnumerable<CustomerSnapshotItem> GetCustomers(string companyID);
+        //IEnumerable<CustomerSnapshotItem> GetCustomers(string companyID);
     }
 
     public class CustomerSnapshotDomainLogic : ICustomerSnapshotDomainLogic
@@ -38,7 +38,19 @@ namespace TylieSageApi.DomainLogic
             TransactionLog transactionLog;
             try
             {
-                List<Customer> customers = AutoMapper.Mapper.Map<List<Customer>>(inputDto.Data);
+                List<Customer> customers = new List<Customer>();
+                foreach (CustomerSnapshotItem csi in inputDto.Data)
+                {
+                    foreach (CustomerSnapshotItem.CustomerSnapshotItemBrand brand in csi.Brands)
+                    {
+                        Customer c = AutoMapper.Mapper.Map<Customer>(csi);
+                        c.Brand = brand.Brand;
+                        c.BrandId = brand.BrandId;
+                        c.BrandKey = brand.Key;
+                        c.BrandStatus = brand.Status;
+                        customers.Add(c);
+                    }
+                }
                 _customerRepository.AddCustomers(customers);
                 transactionLog = new TransactionLog(transitID, EventType.CustomerDataInsert,
                     "Customer Data Posted Successfully");
@@ -75,11 +87,11 @@ namespace TylieSageApi.DomainLogic
             return result;
         }
 
-        public IEnumerable<CustomerSnapshotItem> GetCustomers(string companyID)
-        {
-            IEnumerable<Customer> entityList = _customerRepository.GetByCompanyId(companyID);
-            IEnumerable<CustomerSnapshotItem> customerList = AutoMapper.Mapper.Map<IEnumerable<CustomerSnapshotItem>>(entityList);
-            return customerList;
-        }
+        //public IEnumerable<CustomerSnapshotItem> GetCustomers(string companyID)
+        //{
+        //    IEnumerable<Customer> entityList = _customerRepository.GetByCompanyId(companyID);
+        //    IEnumerable<CustomerSnapshotItem> customerList = AutoMapper.Mapper.Map<IEnumerable<CustomerSnapshotItem>>(entityList);
+        //    return customerList;
+        //}
     }
 }

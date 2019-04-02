@@ -58,11 +58,19 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects
         public string CntctEmail { get; set; }
         public bool PrintAck { get; set; }
         public bool RequireAck { get; set; }
+        [MaxLength(50)]
+        public string Status { get; set; }
         public IList<CustomerSnapshotItemBrand> Brands { get; set; }
 
         public class CustomerSnapshotItemBrand
         {
             [MaxLength(15)]
+            public string BrandId { get; set; }
+
+            public int Key { get; set; }
+            [MaxLength(125)]
+            public string Status { get; set; }
+            [MaxLength(256)]
             public string Brand { get; set; }
         }
     }
