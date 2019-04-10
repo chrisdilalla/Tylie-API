@@ -28,7 +28,10 @@ namespace TylieSageApi.Web.Api.Controllers
                 ThrowModelStateException(ModelState);
 
             SalesOrderResponseDto result = _salesOrderDomainLogic.AddSalesOrder(companyID, inputDto);
-            return Ok(result);
+            if (result.Errors == null || result.Errors.Count == 0)
+                return Ok(result);
+
+            return Content(System.Net.HttpStatusCode.BadRequest, result);
         }
     }
 }

@@ -29,7 +29,10 @@ namespace TylieSageApi.Web.Api.Controllers
                 ThrowModelStateException(ModelState);
 
             VendorsSnapshotResponseDto responseDto = _vendorsSnapshotDomainLogic.GetVendorsSnapshot(companyID, lastUpdatedDate);
-            return Ok(responseDto);
+            if (responseDto.Errors == null || responseDto.Errors.Count == 0)
+                return Ok(responseDto);
+
+            return Content(System.Net.HttpStatusCode.BadRequest, responseDto);
         }
     }
 }

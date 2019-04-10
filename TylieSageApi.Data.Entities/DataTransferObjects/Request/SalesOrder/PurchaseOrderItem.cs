@@ -22,6 +22,6 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Request.SalesOrder
         [MaxLength(255)]
         public string Comment { get; set; }
         public int? Spots { get; set; }
-        public int? Destinations { get; set; }
+        public int? Destination { get; set; }
     }
 }

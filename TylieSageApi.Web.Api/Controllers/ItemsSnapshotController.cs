@@ -30,7 +30,10 @@ namespace TylieSageApi.Web.Api.Controllers
                 ThrowModelStateException(ModelState);
 
             ItemsSnapshotResponseDto responseDto = _itemsSnapshotDomainLogic.GetItemsSnapshot(companyID, lastUpdatedDate);
-            return Ok(responseDto);
+            if (responseDto.Errors == null || responseDto.Errors.Count == 0)
+                return Ok(responseDto);
+
+            return Content(System.Net.HttpStatusCode.BadRequest, responseDto);
         }
     }
 }

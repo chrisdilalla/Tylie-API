@@ -22,7 +22,7 @@ namespace TylieSageApi.Data
                     timVendItem AS b ON a.VendKey = b.VendKey LEFT OUTER JOIN 
                     timItem AS c ON b.ItemKey = c.ItemKey LEFT OUTER JOIN 
                     timvenditem_ext AS d ON b.ItemKey = d.Itemkey AND b.VendKey = d.Vendkey 
-                    WHERE (a.CompanyID = @CompanyId) AND (a.UpdateDate >= @LastUpdatedDate) AND (ISNULL(d.NAFlag, 0) <> 1)",
+                    WHERE (a.CompanyID = @CompanyId) AND (b.UpdateDate >= @LastUpdatedDate) AND (ISNULL(d.NAFlag, 0) <> 1)",
                 parameters);
             resultDto.Data = list;
             return resultDto;
