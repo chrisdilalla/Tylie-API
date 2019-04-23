@@ -14,12 +14,15 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Request.SalesOrder
         [Required]
         [MaxLength(30)]
         public string ItemID { get; set; }
-        [Required]
-        public decimal QtyOrd { get; set; }
-        [Required]
         [MaxLength(15)]
         public string WorkOrderNo { get; set; }
+        [Required]
         public decimal Spots { get; set; }
+        public int Destination { get; set; }
+        [Required]
+        public decimal QtyOrd { get; set; }
+        public int? Length { get; set; }
+        public decimal? AddlOrDiscount { get; set; }
         [MaxLength(255)]
         public string Comment { get; set; }
     }

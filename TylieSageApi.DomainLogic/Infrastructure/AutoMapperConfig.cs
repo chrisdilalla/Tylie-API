@@ -26,8 +26,9 @@ namespace TylieSageApi.DomainLogic.Infrastructure
                     .ForMember(item => item.CntctFax, configExpressionEntity => configExpressionEntity.MapFrom(entity => entity.ContactFax))
                     .ForMember(item => item.CntctPhone, configExpressionEntity => configExpressionEntity.MapFrom(entity => entity.ContactPhone))
                     .ForMember(item => item.CntctEmail, configExpressionEntity => configExpressionEntity.MapFrom(entity => entity.ContactEmail));
-                 cfg.CreateMap<SalesOrderRequestDto, SalesOrder>()
-                .ForMember(item => item.SoNumber, configExpressionEntity => configExpressionEntity.MapFrom(entity => entity.SalesOrder));
+                cfg.CreateMap<SalesOrderRequestDto, SalesOrder>()
+                .ForMember(item => item.SoNumber, configExpressionEntity => configExpressionEntity.MapFrom(entity => entity.SalesOrder))
+                .ForMember(item => item.URL, configExpressionEntity => configExpressionEntity.MapFrom(entity => entity.CallbackUrl));
                 cfg.CreateMap<SalesOrderItem, SalesOrder>();
                 cfg.CreateMap<PurchaseOrderItem, PurchaseOrder>();
                 cfg.CreateMap<PurchaseOrderItemInSalesOrder, PurchaseOrder>();

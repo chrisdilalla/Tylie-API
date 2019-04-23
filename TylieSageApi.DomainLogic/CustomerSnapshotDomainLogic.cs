@@ -41,15 +41,18 @@ namespace TylieSageApi.DomainLogic
                 List<Customer> customers = new List<Customer>();
                 foreach (CustomerSnapshotItem csi in inputDto.Data)
                 {
-                    foreach (CustomerSnapshotItem.CustomerSnapshotItemBrand brand in csi.Brands)
+                    Customer c = AutoMapper.Mapper.Map<Customer>(csi);
+                    if (csi.Brands != null)
                     {
-                        Customer c = AutoMapper.Mapper.Map<Customer>(csi);
-                        c.Brand = brand.Brand;
-                        c.BrandId = brand.BrandId;
-                        c.BrandKey = brand.Key;
-                        c.BrandStatus = brand.Status;
-                        customers.Add(c);
+                        foreach (CustomerSnapshotItem.CustomerSnapshotItemBrand brand in csi.Brands)
+                        {
+                            c.Brand = brand.Brand;
+                            c.BrandId = brand.BrandId;
+                            c.BrandKey = brand.Key;
+                            c.BrandStatus = brand.Status;
+                        }
                     }
+                    customers.Add(c);
                 }
                 _customerRepository.AddCustomers(customers);
                 transactionLog = new TransactionLog(transitID, EventType.CustomerDataInsert,
@@ -65,7 +68,7 @@ namespace TylieSageApi.DomainLogic
                 result.AddErrorsFromException(errorTitle, exception);
                 return result;
             }
-                
+
             transactionLog = new TransactionLog(transitID, EventType.CustomerImportSP_Called,
                 "Customer Import Stored Procedure is called");
             _transactionLogRepository.AddRecord(transactionLog);

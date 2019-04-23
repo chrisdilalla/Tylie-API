@@ -34,10 +34,7 @@ namespace TylieSageApi.Data.Entities.DataTransferObjects.Request.SalesOrder
         public string BilledTo { get; set; }
         public string CostCenter { get; set; }
         public string AdditionalInfo { get; set; }
-        public int? Length { get; set; }
-        public decimal? AddlOrDiscount { get; set; }
         public bool? ProBono { get; set; }
-        public int? Destination { get; set; }
 
         public IList<SalesOrderItem> Lines { get; set; }
         public IList<PurchaseOrderItemInSalesOrder> PurchaseOrders { get; set; }

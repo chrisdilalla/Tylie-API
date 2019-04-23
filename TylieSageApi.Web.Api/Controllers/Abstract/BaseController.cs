@@ -16,6 +16,7 @@ namespace TylieSageApi.Web.Api.Controllers.Abstract
                 foreach (var error in state.Value.Errors)
                 {
                     errors.Add(error.ErrorMessage);
+                    if (string.IsNullOrEmpty(error.ErrorMessage)) errors.Add(error.Exception?.Message);
                 }
             }
             throw new AccountingException("Input data is incorrect", String.Join("\r\n", errors));
