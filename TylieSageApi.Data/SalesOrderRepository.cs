@@ -38,7 +38,10 @@ namespace TylieSageApi.Data
                 [ProBono],
                 [Destination],
                 [CostCenter],
-                [AdditionalInfo])
+                [AdditionalInfo],
+                [Brand],
+            	[OrderedBy],
+            	[BilledTo])
              values (
                 @SoNumber,
                 @CustID,
@@ -59,7 +62,10 @@ namespace TylieSageApi.Data
                 @ProBono,
                 @Destination,
                 @CostCenter,
-                @AdditionalInfo
+                @AdditionalInfo,
+                @Brand,
+            	@OrderedBy,
+            	@BilledTo
                 )";
             for (int itemNum = 0; itemNum < data.Count; itemNum++)
             {

@@ -23,5 +23,8 @@
         public int? Destination { get; set; }
         public int? Length { get; set; }
         public decimal? AddlOrDiscount { get; set; }
+        public string Brand { get; set; }
+        public string OrderedBy { get; set; }
+        public string BilledTo { get; set; }
     }
 }
